@@ -18,4 +18,8 @@ public class Query implements GraphQLQueryResolver {
     public List<User> getUsers(){
         return userRepository.findAll();
     }
+
+    public List<User> getUsersByPartner(String partnerId){
+        return userRepository.findByPartnerId(partnerId);
+    }
 }

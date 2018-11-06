@@ -15,7 +15,7 @@ import java.util.Map;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Table("users")
+@Table("user")
 public class User {
     @PrimaryKeyColumn(name = "partner_id", type = PrimaryKeyType.PARTITIONED, ordinal = 0)
     private String partnerId;
@@ -29,7 +29,7 @@ public class User {
     @Column
     private Map<String, String> field;
     @Column("ref_active_directory")
-    private Map<String, String> refActiveDirectory;
+    private String refActiveDirectory;
     @Column("ref_child")
     private Map<String, String> refChild;
     @Column("user_name")
@@ -82,11 +82,11 @@ public class User {
         this.field = field;
     }
 
-    public Map<String, String> getRefActiveDirectory() {
+    public String getRefActiveDirectory() {
         return refActiveDirectory;
     }
 
-    public void setRefActiveDirectory(Map<String, String> refActiveDirectory) {
+    public void setRefActiveDirectory(String refActiveDirectory) {
         this.refActiveDirectory = refActiveDirectory;
     }
 

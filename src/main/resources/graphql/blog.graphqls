@@ -1,25 +1,10 @@
-type Post {
-    id: ID!
-    title: String!
-    text: String!
-    category: String
-    author: Author
-}
-
-type Author {
-    id: ID!
-    name: String!
-    thumbnail: String
-    posts: [Post]!
-}
-
 type User {
     partnerId: String!
     userId: String!
     startDate: Date!
     endDate: Date
     field: Map
-    refActiveDirectory: Map
+    refActiveDirectory: String
     refChild: Map
     userName: String
 }
@@ -27,16 +12,21 @@ type User {
 # The Root Query for the application
 type Query {
     users: [User]
+    usersByPartner(partnerId: String!): [User]
 }
 
 # The Root Mutation for the application
 type Mutation {
-    createUser(input: CreateUserInput!) : Post!
+    createUser(input: CreateUserInput!) : User!
 }
 
-type CreateUserInput {
+input CreateUserInput {
     partnerId: String!
     userId: String!
     startDate: Date!
     userName: String
 }
+
+# Scalar Type
+scalar Map
+scalar Date
